@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personajes Ilustres - La Independencia de México</title>
+    <style>
+        :root {
+            --verde-patrio: #006847;
+            --blanco: #ffffff;
+            --rojo-patrio: #ce1126;
+            --texto-oscuro: #222222;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html, body {
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        body {
+            background-color: #000000;
+            color: var(--blanco);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navegación */
+        header {
+            background-color: var(--verde-patrio);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: var(--blanco);
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background-color: var(--rojo-patrio);
+        }
+
+        /* Hero Banner / Fondo de Pantalla Completa */
+        main {
+            flex: 1;
+            position: relative;
+            width: 100%;
+            min-height: calc(100vh - 120px);
+            background-image: url('https://images.unsplash.com/photo-1518638150340-f706e86654de?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* Capa oscura de sobreposición */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 1;
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Título de la sección estilo tricolor */
+        .titulo-seccion {
+            font-family: 'Arial Black', 'Impact', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+        }
+
+        .tit-verde { color: #00a859; }
+        .tit-blanco { color: #ffffff; }
+        .tit-rojo { color: #ff2a2a; }
+
+        /* Cuadrícula de Tarjetas */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            width: 100%;
+        }
+
+        /* Estilo de Tarjeta Individual */
+        .card {
+            background: rgba(20, 20, 20, 0.85);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--verde-patrio);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--rojo-patrio);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--verde-patrio);
+        }
+
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .card-title {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .card-subtitle {
+            font-size: 0.9rem;
+            color: #00ff66;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #dddddd;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: var(--verde-patrio);
+            color: var(--blanco);
+            text-align: center;
+            padding: 15px 20px;
+            border-top: 4px solid var(--rojo-patrio);
+            position: relative;
+            z-index: 10;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 3px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .titulo-seccion { font-size: 2rem; }
+            main { padding: 20px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="personajes.html" class="active">PERSONAJES ILUSTRES</a></li>
+                <li><a href="fechas.html">FECHAS IMPORTANTES</a></li>
+                <li><a href="datos-mitos.html">DATOS Y MITOS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO CON FONDO COMPLETO -->
+    <main>
+        <div class="hero-overlay"></div>
+
+        <div class="content-container">
+            <h1 class="titulo-seccion">
+                <span class="tit-verde">PERSONAJES</span> 
+                <span class="tit-blanco">ILUST</span><span class="tit-rojo">RES</span>
+            </h1>
+
+            <div class="cards-grid">
+                
+                <!-- Miguel Hidalgo -->
+                <div class="card">
+                    <img src="Miguel.jpg" alt="Miguel Hidalgo" class="card-img">
+                    <div class="card-body">
+                        <h2 class="card-title">Miguel Hidalgo</h2>
+                        <span class="card-subtitle">Padre de la Patria</span>
+                        <p class="card-text">Sacerdote y militar novohispano que inició la primera etapa de la Guerra de Independencia con el histórico "Grito de Dolores" el 16 de septiembre de 1810.</p>
+                    </div>
+                </div>
+
+                <!-- José María Morelos -->
+                <div class="card">
+                    <img src="Jose.jpg" alt="José María Morelos" class="card-img">
+                    <div class="card-body">
+                        <h2 class="card-title">José María Morelos</h2>
+                        <span class="card-subtitle">Siervo de la Nación</span>
+                        <p class="card-text">Líder militar y político que dirigió la segunda etapa de la independencia. Redactó los "Sentimientos de la Nación", sentando las bases del Estado mexicano.</p>
+                    </div>
+                </div>
+
+                <!-- Josefa Ortiz de Domínguez -->
+                <div class="card">
+                    <img src="Josefa.jpg" alt="Josefa Ortiz de Domínguez" class="card-img">
+                    <div class="card-body">
+                        <h2 class="card-title">Josefa Ortiz</h2>
+                        <span class="card-subtitle">La Corregidora</span>
+                        <p class="card-text">Pieza clave en la conspiración de Querétaro. Su oportuno aviso al descubrirse la conspiración permitió que se adelantara el levantamiento de independencia.</p>
+                    </div>
+                </div>
+
+                <!-- Ignacio Allende -->
+                <div class="card">
+                    <img src="Allende.jpg" alt="Ignacio Allende" class="card-img">
+                    <div class="card-body">
+                        <h2 class="card-title">Ignacio Allende</h2>
+                        <span class="card-subtitle">Capitán General</span>
+                        <p class="card-text">Militar insurgente novohispano que coordinó las primeras acciones del ejército insurgente junto a Miguel Hidalgo durante los primeros meses del movimiento.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p><strong>BANDA NATHANIEL ALEXANDER 5-1</strong> | Matrícula: 24308051280489</p>
+        <p>Materia: CONSTRUYE APLICACIONES WEB</p>
+        <p>&copy; ¡Viva México!</p>
+    </footer>
+
+</body>
+</html>

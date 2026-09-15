@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos y Mitos - La Independencia de México</title>
+    <style>
+        :root {
+            --verde-patrio: #006847;
+            --blanco: #ffffff;
+            --rojo-patrio: #ce1126;
+            --texto-oscuro: #222222;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html, body {
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        body {
+            background-color: #000000;
+            color: var(--blanco);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navegación */
+        header {
+            background-color: var(--verde-patrio);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: var(--blanco);
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background-color: var(--rojo-patrio);
+        }
+
+        /* Hero Banner / Fondo de Pantalla Completa */
+        main {
+            flex: 1;
+            position: relative;
+            width: 100%;
+            min-height: calc(100vh - 120px);
+            background-image: url('https://images.unsplash.com/photo-1518638150340-f706e86654de?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* Capa oscura de sobreposición */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 1;
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Título de la sección estilo tricolor */
+        .titulo-seccion {
+            font-family: 'Arial Black', 'Impact', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+        }
+
+        .tit-verde { color: #00a859; }
+        .tit-blanco { color: #ffffff; }
+        .tit-rojo { color: #ff2a2a; }
+
+        /* Cuadrícula de Tarjetas */
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            width: 100%;
+        }
+
+        .fact-card {
+            background: rgba(20, 20, 20, 0.85);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Tipos de Tarjetas */
+        .card-dato {
+            border: 2px solid var(--verde-patrio);
+        }
+
+        .card-mito {
+            border: 2px solid var(--rojo-patrio);
+        }
+
+        .badge-tag {
+            align-self: flex-start;
+            font-family: 'Arial Black', sans-serif;
+            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge-dato {
+            background-color: var(--verde-patrio);
+            color: #ffffff;
+        }
+
+        .badge-mito {
+            background-color: var(--rojo-patrio);
+            color: #ffffff;
+        }
+
+        .fact-title {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 1.25rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .fact-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #dddddd;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: var(--verde-patrio);
+            color: var(--blanco);
+            text-align: center;
+            padding: 15px 20px;
+            border-top: 4px solid var(--rojo-patrio);
+            position: relative;
+            z-index: 10;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 3px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .titulo-seccion { font-size: 2rem; }
+            main { padding: 20px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="personajes.html">PERSONAJES ILUSTRES</a></li>
+                <li><a href="fechas.html">FECHAS IMPORTANTES</a></li>
+                <li><a href="datos-mitos.html" class="active">DATOS Y MITOS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO CON FONDO COMPLETO -->
+    <main>
+        <div class="hero-overlay"></div>
+
+        <div class="content-container">
+            <h1 class="titulo-seccion">
+                <span class="tit-verde">DATOS Y</span> 
+                <span class="tit-blanco">MITOS</span><span class="tit-rojo"> HISTÓRICOS</span>
+            </h1>
+
+            <div class="facts-grid">
+                
+                <!-- Tarjeta 1: Mito -->
+                <div class="fact-card card-mito">
+                    <span class="badge-tag badge-mito">Falso / Mito</span>
+                    <h2 class="fact-title">¿El "Grito de Dolores" ocurrió a la medianoche del 15 de septiembre?</h2>
+                    <p class="fact-text">Falso. El Grito histórico fue dado por Miguel Hidalgo alrededor de las 5:00 a.m. del 16 de septiembre de 1810. Se celebra la noche del 15 debido a que Porfirio Díaz ajustó la ceremonia para hacerla coincidir con el día de su cumpleaños.</p>
+                </div>
+
+                <!-- Tarjeta 2: Dato Curioso -->
+                <div class="fact-card card-dato">
+                    <span class="badge-tag badge-dato">Dato Curioso</span>
+                    <h2 class="fact-title">El origen del nombre "Chile en Nogada"</h2>
+                    <p class="fact-text">Este famoso platillo poblano fue creado por las monjas agustinas del convento de Santa Mónica para celebrar la entrada del Ejército Trigarante. Lleva los tres colores de la bandera: verde (perejil), blanco (nogada) y rojo (granada).</p>
+                </div>
+
+                <!-- Tarjeta 3: Mito -->
+                <div class="fact-card card-mito">
+                    <span class="badge-tag badge-mito">Falso / Mito</span>
+                    <h2 class="fact-title">¿Existió realmente "El Pípila"?</h2>
+                    <p class="fact-text">Aunque la toma de la Alhóndiga de Granaditas fue real, historiadores afirman que Juan José de los Reyes Martínez ("El Pípila") representa en realidad el heroísmo colectivo de los mineros y campesinos de la época, más que a un individuo único.</p>
+                </div>
+
+                <!-- Tarjeta 4: Dato Curioso -->
+                <div class="fact-card card-dato">
+                    <span class="badge-tag badge-dato">Dato Curioso</span>
+                    <h2 class="fact-title">El verdadero estandarte de Hidalgo</h2>
+                    <p class="fact-text">Miguel Hidalgo no llevaba una bandera oficial como la conocemos hoy. Al pasar por el santuario de Atotonilco, tomó un lienzo con la imagen de la Virgen de Guadalupe y lo usó como la primera insignia del movimiento insurgente.</p>
+                </div>
+
+                <!-- Tarjeta 5: Mito -->
+                <div class="fact-card card-mito">
+                    <span class="badge-tag badge-mito">Falso / Mito</span>
+                    <h2 class="fact-title">¿La campana del Grito siempre estuvo en Palacio Nacional?</h2>
+                    <p class="fact-text">No. La campana original (Campana de Dolores) permaneció en la parroquia de Dolores, Guanajuato, hasta 1896, cuando el presidente Porfirio Díaz ordenó trasladarla a la Ciudad de México para colocarla en el balcón principal.</p>
+                </div>
+
+                <!-- Tarjeta 6: Dato Curioso -->
+                <div class="fact-card card-dato">
+                    <span class="badge-tag badge-dato">Dato Curioso</span>
+                    <h2 class="fact-title">La campana fue "castigada" por el gobierno español</h2>
+                    <p class="fact-text">Tras el levantamiento insurgente, las autoridades virreinales mandaron bajar la Campana de Dolores y le quitaron el badajo como sanción por haber sido utilizada para convocar a la rebelión.</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p><strong>BANDA NATHANIEL ALEXANDER 5-1</strong> | Matrícula: 24308051280489</p>
+        <p>Materia: CONSTRUYE APLICACIONES WEB</p>
+        <p>&copy; ¡Viva México!</p>
+    </footer>
+
+</body>
+</html>

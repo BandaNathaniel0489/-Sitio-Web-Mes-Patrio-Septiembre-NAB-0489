@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fechas Importantes - La Independencia de México</title>
+    <style>
+        :root {
+            --verde-patrio: #006847;
+            --blanco: #ffffff;
+            --rojo-patrio: #ce1126;
+            --texto-oscuro: #222222;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html, body {
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        body {
+            background-color: #000000;
+            color: var(--blanco);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navegación */
+        header {
+            background-color: var(--verde-patrio);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: var(--blanco);
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background-color: var(--rojo-patrio);
+        }
+
+        /* Hero Banner / Fondo de Pantalla Completa */
+        main {
+            flex: 1;
+            position: relative;
+            width: 100%;
+            min-height: calc(100vh - 120px);
+            background-image: url('https://images.unsplash.com/photo-1518638150340-f706e86654de?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* Capa oscura de sobreposición */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 1;
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Título de la sección estilo tricolor */
+        .titulo-seccion {
+            font-family: 'Arial Black', 'Impact', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+        }
+
+        .tit-verde { color: #00a859; }
+        .tit-blanco { color: #ffffff; }
+        .tit-rojo { color: #ff2a2a; }
+
+        /* Lista Cronológica / Tarjetas de Fechas */
+        .timeline-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .date-card {
+            background: rgba(20, 20, 20, 0.85);
+            border-radius: 12px;
+            border-left: 6px solid var(--verde-patrio);
+            border-right: 2px solid var(--verde-patrio);
+            border-top: 2px solid var(--verde-patrio);
+            border-bottom: 2px solid var(--verde-patrio);
+            padding: 20px 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s, border-left-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .date-card:hover {
+            transform: translateX(10px);
+            border-left-color: var(--rojo-patrio);
+        }
+
+        .date-badge {
+            background-color: var(--rojo-patrio);
+            color: #ffffff;
+            font-family: 'Arial Black', sans-serif;
+            font-size: 1.1rem;
+            padding: 12px 18px;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 160px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+        }
+
+        .date-info {
+            flex: 1;
+        }
+
+        .date-title {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 1.3rem;
+            color: #00ff66;
+            margin-bottom: 6px;
+        }
+
+        .date-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #dddddd;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: var(--verde-patrio);
+            color: var(--blanco);
+            text-align: center;
+            padding: 15px 20px;
+            border-top: 4px solid var(--rojo-patrio);
+            position: relative;
+            z-index: 10;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 3px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .titulo-seccion { font-size: 2rem; }
+            .date-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .date-badge {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="personajes.html">PERSONAJES ILUSTRES</a></li>
+                <li><a href="fechas.html" class="active">FECHAS IMPORTANTES</a></li>
+                <li><a href="datos-mitos.html">DATOS Y MITOS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO CON FONDO COMPLETO -->
+    <main>
+        <div class="hero-overlay"></div>
+
+        <div class="content-container">
+            <h1 class="titulo-seccion">
+                <span class="tit-verde">FECHAS</span> 
+                <span class="tit-blanco">IMPORT</span><span class="tit-rojo">ANTES</span>
+            </h1>
+
+            <div class="timeline-grid">
+                
+                <!-- Fecha 1 -->
+                <div class="date-card">
+                    <div class="date-badge">16 SEP 1810</div>
+                    <div class="date-info">
+                        <h2 class="date-title">El Grito de Dolores</h2>
+                        <p class="date-text">El cura Miguel Hidalgo y Costilla convoca al pueblo de Dolores, Guanajuato, a levantarse en armas contra el dominio español, marcando el inicio formal de la Independencia.</p>
+                    </div>
+                </div>
+
+                <!-- Fecha 2 -->
+                <div class="date-card">
+                    <div class="date-badge">28 SEP 1810</div>
+                    <div class="date-info">
+                        <h2 class="date-title">Toma de la Alhóndiga de Granaditas</h2>
+                        <p class="date-text">Primera gran batalla del ejército insurgente en Guanajuato, recordada por la célebre acción heroica de Juan José de los Reyes Martínez, "El Pípila".</p>
+                    </div>
+                </div>
+
+                <!-- Fecha 3 -->
+                <div class="date-card">
+                    <div class="date-badge">14 SEP 1813</div>
+                    <div class="date-info">
+                        <h2 class="date-title">Sentimientos de la Nación</h2>
+                        <p class="date-text">José María Morelos y Pavón presenta en el Congreso de Chilpancingo este documento histórico que declaró la absoluta independencia de América de España.</p>
+                    </div>
+                </div>
+
+                <!-- Fecha 4 -->
+                <div class="date-card">
+                    <div class="date-badge">24 FEB 1821</div>
+                    <div class="date-info">
+                        <h2 class="date-title">Promulgación del Plan de Iguala</h2>
+                        <p class="date-text">Agustín de Iturbide y Vicente Guerrero unen sus fuerzas mediante este pacto que estableció las "Tres Garantías": Religión, Independencia y Unión.</p>
+                    </div>
+                </div>
+
+                <!-- Fecha 5 -->
+                <div class="date-card">
+                    <div class="date-badge">27 SEP 1821</div>
+                    <div class="date-info">
+                        <h2 class="date-title">Entrada del Ejército Trigarante</h2>
+                        <p class="date-text">El Ejército Trigarante entra triunfal a la Ciudad de México, consumando de manera definitiva la Guerra de Independencia tras 11 años de lucha.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p><strong>BANDA NATHANIEL ALEXANDER 5-1</strong> | Matrícula: 24308051280489</p>
+        <p>Materia: CONSTRUYE APLICACIONES WEB</p>
+        <p>&copy; ¡Viva México!</p>
+    </footer>
+
+</body>
+</html>

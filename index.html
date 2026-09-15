@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - La Independencia de México</title>
+    <style>
+        :root {
+            --verde-patrio: #006847;
+            --blanco: #ffffff;
+            --rojo-patrio: #ce1126;
+            --texto-oscuro: #222222;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial Black', 'Impact', sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: #000000;
+            color: var(--texto-oscuro);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navegación */
+        header {
+            background-color: var(--verde-patrio);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: var(--blanco);
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background-color: var(--rojo-patrio);
+        }
+
+        /* Contenedor Principal a Pantalla Completa */
+        main {
+            flex: 1;
+            width: 100%;
+            display: flex;
+        }
+
+        /* Banner de Portada en Fullscreen */
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: calc(100vh - 120px);
+            background-image: url('https://images.unsplash.com/photo-1518638150340-f706e86654de?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Máscara oscura para legibilidad del texto */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            margin: auto 0;
+        }
+
+        /* Subtítulo superior */
+        .subtitulo-superior {
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+            margin-bottom: 25px;
+        }
+
+        .subtitulo-superior .txt-verde { color: #00ff66; }
+        .subtitulo-superior .txt-blanco { color: #ffffff; }
+        .subtitulo-superior .txt-rojo { color: #ff3333; }
+
+        /* Título Principal "MÉXICO" */
+        .titulo-mexico {
+            font-size: 8rem;
+            line-height: 0.9;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9);
+            margin-bottom: 15px;
+        }
+
+        .mex-verde { color: #00a859; }
+        .mex-blanco { color: #ffffff; }
+        .mex-rojo { color: #ff2a2a; }
+
+        /* Título Secundario "LA INDEPENDENCIA DE MEXICO" */
+        .titulo-independencia {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+        }
+
+        .ind-verde { color: #00a859; }
+        .ind-blanco { color: #ffffff; }
+        .ind-rojo { color: #ff2a2a; }
+
+        /* Datos de la portada sobre la imagen */
+        .creditos-portada {
+            position: relative;
+            z-index: 2;
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 25px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: var(--verde-patrio);
+            color: var(--blanco);
+            text-align: center;
+            padding: 15px 20px;
+            border-top: 4px solid var(--rojo-patrio);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 3px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Ajustes de pantalla móvil */
+        @media (max-width: 768px) {
+            .titulo-mexico { font-size: 4.5rem; }
+            .titulo-independencia { font-size: 1.6rem; }
+            .subtitulo-superior { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">INICIO</a></li>
+                <li><a href="personajes.html">PERSONAJES ILUSTRES</a></li>
+                <li><a href="fechas.html">FECHAS IMPORTANTES</a></li>
+                <li><a href="datos-mitos.html">DATOS Y MITOS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- PORTADA COMPLETA EN TODA LA PÁGINA -->
+    <main>
+        <div class="hero-banner">
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+                <div class="subtitulo-superior">
+                    <span class="txt-verde">MÉXICO ES LA PAT</span><span class="txt-blanco">RIA QUE SE LLEVA EN</span> <span class="txt-rojo">EL CORAZÓN.</span>
+                </div>
+                
+                <h1 class="titulo-mexico">
+                    <span class="mex-verde">MÉ</span><span class="mex-blanco">XI</span><span class="mex-rojo">CO</span>
+                </h1>
+
+                <h2 class="titulo-independencia">
+                    <span class="ind-verde">LA INDEPE</span><span class="ind-blanco">NDENCIA</span> <span class="ind-rojo">DE MEXICO</span>
+                </h2>
+            </div>
+
+            <div class="creditos-portada">
+                BANDA NATHANIEL ALEXANDER 5-1 0489 <br>
+                CONSTRUYE APLICACIONES WEB
+            </div>
+        </div>
+    </main>
+
+    <!-- PIE DE PÁGINA PERSISTENTE -->
+    <footer>
+        <p><strong>BANDA NATHANIEL ALEXANDER 5-1</strong> | Matrícula: 24308051280489</p>
+        <p>Materia: CONSTRUYE APLICACIONES WEB</p>
+        <p>&copy; ¡Viva México!</p>
+    </footer>
+
+</body>
+</html>
